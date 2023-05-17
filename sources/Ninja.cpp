@@ -2,7 +2,7 @@
 
 namespace ariel {
 
-    Ninja::Ninja(string&& name, int healthPoints, Point location, int speed)
+    Ninja::Ninja(string&& name, Point location,int healthPoints, int speed)
         : Character(std::move(name), location, healthPoints), speed(speed) {}
 
     void Ninja::move(Character* enemy) {
