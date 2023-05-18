@@ -17,6 +17,7 @@ namespace ariel{
         void hit(int hurtPoint);
         string getName();
         Point getLocation();
+        void setLocation(Point other);
         virtual string print();
         Character& operator=(const Character& other);
     };

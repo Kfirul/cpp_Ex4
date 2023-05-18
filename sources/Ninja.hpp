@@ -18,17 +18,5 @@ namespace ariel {
         int getSpeed();
     };
 
-    class OldNinja:public Ninja{
-        public:
-        OldNinja(string&& name , Point location);
-    };
-       class YoungNinja:public Ninja{
-        public:
-        YoungNinja(string&& name , Point location);
-    };
-       class TrainedNinja:public Ninja{
-        public:
-        TrainedNinja(string&& name , Point location);
-    };
 }
 #endif

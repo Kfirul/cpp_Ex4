@@ -8,7 +8,7 @@ using namespace std;
 
 namespace ariel {
     class Cowboy: public Character{
-        int bullsCount;
+        int booletsCount;
 
         public:
         Cowboy(string name, Point &location);

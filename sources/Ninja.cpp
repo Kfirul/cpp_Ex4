@@ -6,13 +6,12 @@ namespace ariel {
         : Character(std::move(name), location, healthPoints), speed(speed) {}
 
     void Ninja::move(Character* enemy) {
-        // Point enemyLocation = enemy->getLocation();
-        // Point currentLocation = getLocation();
-        // double distance = currentLocation.distance(enemyLocation);
-        // setLocation(moveTowards(currentLocation, enemyLocation, distance));
+        setLocation(moveTowards(currentLocation, enemyLocation, speed));
     }
 
     void Ninja::slash(Character* enemy) {
+        double distance = this.getLocation().distance(other.getLocation());
+        if(isAlive() && distance <1)
         enemy->hit(40);
     }
 
@@ -20,13 +19,8 @@ namespace ariel {
         return this->speed;
     }
 
-    OldNinja::OldNinja(string&& name, Point location)
-        : Ninja(std::move(name), 150, location, 8) {}
-
-    YoungNinja::YoungNinja(string&& name, Point location)
-        : Ninja(std::move(name), 100, location, 14) {}
-
-    TrainedNinja::TrainedNinja(string&& name, Point location)
-        : Ninja(std::move(name), 120, location, 12) {}
+    string Ninja::print(){
+        "N" + Character::print();
+    }
 
 } 
