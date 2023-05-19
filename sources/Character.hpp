@@ -12,6 +12,7 @@ namespace ariel{
         public:
         Character(string Name, Point &location, int healthPoints);
         Character(Character& other);
+        virtual ~Character();
         bool isAlive();
         double distance(Character* other);
         void hit(int hurtPoint);

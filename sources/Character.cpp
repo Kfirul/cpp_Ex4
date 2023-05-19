@@ -34,13 +34,13 @@ using namespace ariel;
     }
 
     void Character::setLocation(Point other){
-        location = other.getLocation();
+        location = Point(getLocation());
     }
 
     string Character::print() {
         if(!isAlive())
             return "name: ("+name  + "), Locatin: " location.print();
-       return "name: "+name + ", health: "+ health + ", Locatin: " location.print();
+       return "name: "+name + ", health: "+to_string(health)  + ", Locatin: " +location.print();
     }
 
     Character& Character::operator=(const Character& other){
