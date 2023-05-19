@@ -12,12 +12,12 @@ namespace ariel {
         int speed;
 
         public:
-        Ninja(string& name,Point location, int healthPoints, int speed);
-        ~Ninja() override;
+        Ninja(string name, Point location,int healthPoints, int speed);
+        ~Ninja() override = default;
         void move(Character* enemy);
         void slash(Character* enemy);
         int getSpeed();
-        string print() override;
+        string print() const override;
     };
 
 }

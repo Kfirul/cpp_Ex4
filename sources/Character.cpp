@@ -3,12 +3,12 @@
 using namespace ariel;
 
     Character::Character(string Name, Point &loc, int healthPoints)
-        : name(Name), location(loc), health(healthPoints) {}
+        : name(Name), location(loc), health(healthPoints),play_now(false) {}
 
-    Character::Character(Character& other)
+    Character::Character(const Character& other)
         : name(other.getName()), location(other.getLocation()), health(other.health) {}
 
-    bool Character::isAlive() {
+    bool Character::isAlive() const{
         return health > 0;
     }
 
@@ -25,11 +25,11 @@ using namespace ariel;
         }
     }
 
-    string Character::getName() {
+    string Character::getName() const {
         return name;
     }
 
-    Point Character::getLocation() {
+    Point Character::getLocation() const{
         return location;
     }
 
@@ -37,11 +37,21 @@ using namespace ariel;
         location = Point(getLocation());
     }
 
-    string Character::print() {
+    string Character::print() const{
         if(!isAlive())
-            return "name: ("+name  + "), Locatin: " location.print();
+            return "name: ("+name  + "), Locatin: " +location.print();
        return "name: "+name + ", health: "+to_string(health)  + ", Locatin: " +location.print();
     }
+
+    bool Character::play() const {
+        return play_now;
+    }
+
+    void Character::setPlay(bool playNow) {
+        play_now = playNow;
+    }
+
+
 
     Character& Character::operator=(const Character& other){
     if(this==&other) return *this;

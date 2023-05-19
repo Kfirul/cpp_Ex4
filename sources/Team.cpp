@@ -32,14 +32,15 @@ using namespace ariel ;
                 
                 if(target->isAlive()){
                     if(dynamic_cast<Cowboy*>(teammate) && teammate->isAlive()){
-                        Cowboy *cowboy = dynamic_cast<Cowboy*>(teammate)
+                        Cowboy *cowboy = dynamic_cast<Cowboy*>(teammate);
                         if(cowboy->hasboolets())
                             cowboy->shoot(target);
                         else cowboy ->reload();   
                     }
                     else if(dynamic_cast<Ninja*>(teammate) && teammate->isAlive()){
-                        Ninja *ninja = dynamic_cast<Ninja*>(teammate)
-                        double distance = Ninja->getLocation().distance(target->getLocation());
+                        Ninja *ninja = dynamic_cast<Ninja*>(teammate);
+                        Point NinjaLocation= ninja->getLocation();
+                        double distance = NinjaLocation.distance(target->getLocation());
                         if(distance <1)
                             ninja->slash(target);
                         else ninja->move(target);    
@@ -48,7 +49,7 @@ using namespace ariel ;
                 }
 
                 if(enemiesTeam->stillAlive()>0)
-                    target = selectTarget(*enemiesTeam,leader->getLocation())
+                    target = selectTarget(*enemiesTeam,leader->getLocation());
                 else break;
             }
             }
@@ -58,8 +59,8 @@ using namespace ariel ;
         
     int Team::stillAlive() {
         int count=0;
-        for (Character& character : team) {
-            if (character.isAlive()) {
+        for (Character* character : team) {
+            if (character->isAlive()) {
                 count++;
             }
         }
@@ -70,8 +71,8 @@ using namespace ariel ;
         this->orderByCowboyNinja();
         string str="";
         cout << "Team Members:" << endl;
-        for (const Character& teammate : team) {
-            str += teammate.print();
+        for (const Character* teammate : team) {
+            str += teammate->print();
         }
         cout<< str<<endl;
     }
@@ -93,20 +94,21 @@ using namespace ariel ;
         }
     }
 
-    Character* Team:: selectTarget(Team enemiesTeam,Point leaderLocation){
-        double minDistance = numeric_limits<double>::max();
-            Character* target = nullptr;
-            for (Character& enemy : enemiesTeam.team) {
-                if (enemy.isAlive()) {
-                    double distance = leaderLocation.distance(enemy.getLocation());
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        target = &enemy;
-                    }
-                }   
-
+    Character* Team::selectTarget(Team enemiesTeam, Point leaderLocation) {
+    double minDistance = std::numeric_limits<double>::max();
+    Character* target = nullptr;
+    for (Character* enemy : enemiesTeam.team) {
+        if (enemy->isAlive()) {
+            double distance = leaderLocation.distance(enemy->getLocation());
+            if (distance < minDistance) {
+                minDistance = distance;
+                target = enemy;
             }
+        }
     }
+    return target; 
+    }
+
 
     void Team::setLeader() {
     if (!leader->isAlive()) {

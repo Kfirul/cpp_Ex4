@@ -15,8 +15,8 @@ using namespace ariel;
         return sqrt(dx * dx + dy * dy);
     }
 
-    string Point::print() {
-        return "(" + cordX + ", " + cordY + ")";
+    string Point::print() const{
+        return "(" + to_string(cordX) + ", " + to_string(cordY) + ")";
     }
 
     Point Point::moveTowards(Point src, Point dst, double distance) {

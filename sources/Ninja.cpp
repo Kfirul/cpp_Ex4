@@ -2,11 +2,10 @@
 
 namespace ariel {
 
-    Ninja::Ninja(string& name, Point location,int healthPoints, int speed)
-        : Character(std::move(name), location, healthPoints), speed(speed) {}
+    Ninja::Ninja(string name, Point location,int health,int speed) : Character(name, location, health),speed(speed){}
 
     void Ninja::move(Character* enemy) {
-        setLocation(moveTowards(this->getLocation(), enemy->getLocation(), speed));
+        setLocation(Point::moveTowards(this->getLocation(), enemy->getLocation(), speed));
     }
 
     void Ninja::slash(Character* enemy) {
@@ -17,8 +16,8 @@ namespace ariel {
         return this->speed;
     }
 
-    string Ninja::print(){
-        "N" + Character::print();
+    string Ninja::print() const{
+        return "N" + Character::print();
     }
 
 } 

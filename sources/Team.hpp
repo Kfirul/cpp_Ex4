@@ -6,6 +6,10 @@
 
 #include "Cowboy.hpp"
 #include "Ninja.hpp"
+#include "OldNinja.hpp"
+#include "TrainedNinja.hpp"
+#include "YoungNinja.hpp"
+
 
 using namespace std;
 namespace ariel{

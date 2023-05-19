@@ -11,12 +11,12 @@ namespace ariel {
         int booletsCount;
 
         public:
-        Cowboy(string name, Point &location);
-         ~Cowboy() override;
+        Cowboy(string name, Point location);
+         ~Cowboy() override = default;
         void shoot(Character* enemy);
         bool hasboolets();
         void reload();
-        string print() override;
+        string print() const override;
     
     };
 }

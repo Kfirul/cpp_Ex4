@@ -2,7 +2,7 @@
 
 namespace ariel {
 
-    Cowboy::Cowboy(string name, Point &location) : Character(name, location, 110), booletsCount(6) {}
+    Cowboy::Cowboy(string name, Point location) : Character(name, location, 110), booletsCount(6) {}
 
     void Cowboy::shoot(Character* enemy) {
         if (hasboolets() && isAlive()) {
@@ -19,7 +19,7 @@ namespace ariel {
         booletsCount = 6;
     }
 
-    string Cowboy::print() {
+    string Cowboy::print() const{
     return "C" + Character::print();
 }
 
