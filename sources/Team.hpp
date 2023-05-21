@@ -17,24 +17,29 @@ namespace ariel{
         Character *leader;
         vector<Character*> team;
         void orderByCowboyNinja();
-        Character* selectTarget(Team enemiesTeam,Point leaderLocation);
+        Character* selectTarget(Team& enemiesTeam);
         void setLeader();
         public:
         Team(Character* leader);
         
-        ~Team();
+        virtual ~Team();
         virtual void add(Character* teamate);
         void attack(Team* enemiesTeam);
         int stillAlive();
         void print();
         vector<Character*>& getTeam();
-
+        Character*& getLeader();
         template<typename T>
-        void swap(T&a ,T&b){
-            T tmp=a;
-            a=b;
-            b=tmp;
+        void swap(T&obj1 ,T&obj2){
+            T tmp=obj1;
+            obj1=obj2;
+            obj2=tmp;
         }
+
+    Team (Team&) = delete; // Copy Constructor.
+    Team (Team&&) noexcept = delete; // Move Constructor.
+    Team& operator = (const Team&) = delete; // Copy assignment operator.
+    Team& operator = (Team&&) noexcept = delete; // Move assignment operator.  
 
     };
 }

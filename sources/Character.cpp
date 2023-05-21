@@ -23,6 +23,7 @@ using namespace ariel;
                 health = 0;
             }
         }
+        else throw invalid_argument ("Sending negative value to hit");
     }
 
     string Character::getName() const {
@@ -33,8 +34,8 @@ using namespace ariel;
         return location;
     }
 
-    void Character::setLocation(Point other){
-        location = Point(getLocation());
+    void Character::setLocation(const Point &other){
+        location = other;
     }
 
     string Character::print() const{
@@ -50,8 +51,6 @@ using namespace ariel;
     void Character::setPlay(bool playNow) {
         play_now = playNow;
     }
-
-
 
     Character& Character::operator=(const Character& other){
     if(this==&other) return *this;

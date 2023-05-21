@@ -13,7 +13,6 @@ namespace ariel {
 
         public:
         Ninja(string name, Point location,int healthPoints, int speed);
-        ~Ninja() override = default;
         void move(Character* enemy);
         void slash(Character* enemy);
         int getSpeed();

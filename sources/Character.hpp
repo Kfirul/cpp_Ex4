@@ -20,11 +20,16 @@ namespace ariel{
         void hit(int hurtPoint);
         string getName() const;
         Point getLocation() const;
-        void setLocation(Point other);
+        void setLocation(const Point &other);
         virtual string print() const;
-        Character& operator=(const Character& other);
-        bool play();
+        bool play()const;
         void setPlay(bool playNow);
+
+
+        Character (Character&); // Copy Constructor.
+        Character(Character&& ) noexcept; // Move Constructor.
+        Character& operator = (const Character&); // Copy assignment operator.
+        Character& operator = (Character&&) noexcept; // Move assignment operato
     };
 }
 #endif
