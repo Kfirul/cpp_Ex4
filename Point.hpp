@@ -1,5 +1,7 @@
 #ifndef POINT_HPP
 #define POINT_HPP
+#include <string>
+using namespace std;
 namespace ariel{
 
 class Point {
@@ -9,10 +11,10 @@ class Point {
     public:
 
     Point(double cordX,double cordY);
-    Point(Point other);
+    Point(Point const & other);
     double distance(Point other);
-    string print();
-    Point moveTowards(Point src, Point dst, double distance);
+    string print() const;
+    static Point moveTowards(Point src, Point dst, double distance);
     double getX();
     double getY();
 
